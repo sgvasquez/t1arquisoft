@@ -1,0 +1,16 @@
+'use strict';
+
+module.exports = function(Message) {
+
+  Message.observe('before save', async function(ctx){
+
+    var time = new Date();
+    if (ctx.instance) {
+      ctx.instance.createdat = time;
+    } else {
+      ctx.data.createdat = time;
+    }
+  
+  });
+
+};

@@ -1,0 +1,30 @@
+<html ng-app="arquiModule">
+  <head>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/lb-services.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+
+<body>
+  
+  <div class="form-msg">
+    <form ng-submit="submit()" ng-controller="PostMessageController">
+      Message:  
+      <input type="text" ng-model="message" name="message">
+      <input type="submit" id="submit" value="Post it!">
+    </form>
+  </div>
+  
+  <div ng-controller="MessageListController">
+    <ul class="scroll-msgs">
+      <li ng-repeat="message in messages">
+        <span>{{ message.ip }} at {{ message.createdat.split('T').pop().split('.').shift() }} said:</span>
+        <p>{{message.content}}</p>
+      </li>
+    </ul>
+  </div>
+
+</body>
+</html>
